@@ -1,0 +1,65 @@
+{
+  "consumer": {
+    "name": "UserConsumer"
+  },
+  "interactions": [
+    {
+      "description": "A valid create user request",
+      "providerStates": [
+        {
+          "name": "There is a new user"
+        }
+      ],
+      "request": {
+        "body": {
+          "confirmPassword": "Chan12345",
+          "email": "test31@test.com",
+          "firstName": "Chandra31",
+          "lastName": "Muddam31",
+          "password": "Chan12345",
+          "role": "Admin",
+          "title": "Mr"
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "method": "POST",
+        "path": "users"
+      },
+      "response": {
+        "body": {
+          "message": "User created"
+        },
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "matchingRules": {
+          "body": {
+            "$.message": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          },
+          "header": {}
+        },
+        "status": 200
+      }
+    }
+  ],
+  "metadata": {
+    "pactRust": {
+      "ffi": "0.4.0",
+      "models": "1.0.4"
+    },
+    "pactSpecification": {
+      "version": "3.0.0"
+    }
+  },
+  "provider": {
+    "name": "UserProvider"
+  }
+}
